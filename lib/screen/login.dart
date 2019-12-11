@@ -82,9 +82,12 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
       String status = await HttpHandler().atemptLogin(userController.text, passwordController.text);
 
       if (!status.isEmpty) {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
         if (isChecked) {
-          SharedPreferences preferences = await SharedPreferences.getInstance();
           preferences.setBool('session',  true);
+          preferences.setString('username', userController.text);
+          preferences.setString('access_token', status.split(",")[0].split(":")[1]);
+        } else {
           preferences.setString('username', userController.text);
           preferences.setString('access_token', status.split(",")[0].split(":")[1]);
         }

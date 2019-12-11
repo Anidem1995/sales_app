@@ -25,7 +25,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     getSession().then(updateSession);
-    Timer(Duration(seconds: 3), () => session ?  MyNavigator.goToHome(context) : MyNavigator.goToLogin(context));
+    Timer(Duration(seconds: 1), () => session ?  MyNavigator.goToHome(context) : MyNavigator.goToLogin(context));
   }
 
   void updateSession(bool session) {
@@ -38,13 +38,12 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return SplashScreen(
       seconds: 3,
-      navigateAfterSeconds: Login(),
-      title: Text('Sales app', style: TextStyle(fontSize: 15),),
+      navigateAfterSeconds: getSession(),
+      title: Text('Sales app', style: TextStyle(fontSize: 25, color: Colors.white),),
       image: Image.network('https://banner2.cleanpng.com/20180519/zci/kisspng-raccoon-t-shirt-logo-brand-giant-panda-5b009586461571.9537690715267649342871.jpg'),
       backgroundColor: Color(0xFF8185E2),
       styleTextUnderTheLoader: TextStyle(),
       photoSize: 100.0,
-      onClick: ()=> print('Clic!'),
       loaderColor: Colors.white,
     );
   }

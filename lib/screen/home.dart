@@ -27,6 +27,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     String name = 'José';
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Listado de productos',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
